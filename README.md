@@ -4,7 +4,7 @@
 
 **📌 CleanStart Foundation:** Security-hardened, minimal base OS designed for enterprise containerized environments.
 
-**Image Path:** `cleanstart/cosign`
+**Image Path:** `ghcr.io/cleanstart-containers/cosign`
 
 **Registry:** CleanStart Registry
 
@@ -28,7 +28,7 @@ CleanStart images are built on secure, minimal base operating systems and optimi
 
 ## Image
 ```
-cleanstart/cosign:latest-dev
+ghcr.io/cleanstart-containers/cosign:latest-dev
 ```
 
 ---
@@ -52,15 +52,15 @@ cleanstart/cosign:latest-dev
 
 ### Pull Commands
 ```bash
-docker pull cleanstart/cosign:latest
-docker pull cleanstart/cosign:latest-dev
+docker pull ghcr.io/cleanstart-containers/cosign:latest
+docker pull ghcr.io/cleanstart-containers/cosign:latest-dev
 ```
 
 ### Run Commands
 
 Basic test:
 ```bash
-docker run -it --name cosign-test cleanstart/cosign:latest-dev
+docker run -it --name cosign-test ghcr.io/cleanstart-containers/cosign:latest-dev
 ```
 
 Production deployment:
@@ -69,7 +69,7 @@ docker run -d --name cosign-prod \
   --read-only \
   --security-opt=no-new-privileges \
   --user 1000:1000 \
-  cleanstart/cosign:latest
+  ghcr.io/cleanstart-containers/cosign:latest
 ```
 
 ---
@@ -78,13 +78,13 @@ docker run -d --name cosign-prod \
 
 ### Check Version
 ```bash
-docker run --rm cleanstart/cosign:latest-dev version
+docker run --rm ghcr.io/cleanstart-containers/cosign:latest-dev version
 ```
 
 ### Generate Keys
 ```bash
 docker run --rm -v $(pwd):/workspace -w /workspace \
-  cleanstart/cosign:latest-dev generate-key-pair
+  ghcr.io/cleanstart-containers/cosign:latest-dev generate-key-pair
 ```
 
 ### Sign Image
@@ -92,7 +92,7 @@ docker run --rm -v $(pwd):/workspace -w /workspace \
 docker run --rm \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v $(pwd):/workspace -w /workspace \
-  cleanstart/cosign:latest-dev sign --key cosign.key <registry>/<image>:tag
+  ghcr.io/cleanstart-containers/cosign:latest-dev sign --key cosign.key <registry>/<image>:tag
 ```
 
 ### Verify Signature
@@ -100,7 +100,7 @@ docker run --rm \
 docker run --rm \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v $(pwd):/workspace -w /workspace \
-  cleanstart/cosign:latest-dev verify --key cosign.pub <registry>/<image>:tag
+  ghcr.io/cleanstart-containers/cosign:latest-dev verify --key cosign.pub <registry>/<image>:tag
 ```
 
 ---
@@ -125,8 +125,8 @@ CleanStart images support multiple architectures to ensure compatibility across 
 
 ### Architecture-based Pull Commands
 ```bash
-docker pull --platform linux/amd64 cleanstart/cosign:latest
-docker pull --platform linux/arm64 cleanstart/cosign:latest
+docker pull --platform linux/amd64 ghcr.io/cleanstart-containers/cosign:latest
+docker pull --platform linux/arm64 ghcr.io/cleanstart-containers/cosign:latest
 ```
 
 ---
