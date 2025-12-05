@@ -83,8 +83,10 @@ docker run --rm ghcr.io/cleanstart-containers/cosign:latest-dev version
 
 ### Generate Keys
 ```bash
-docker run --rm -v $(pwd):/workspace -w /workspace \
-  ghcr.io/cleanstart-containers/cosign:latest-dev generate-key-pair
+docker run --rm -it \
+  -v $(pwd):/workspace -w /workspace \
+  ghcr.io/cleanstart-containers/cosign:latest-dev \
+  generate-key-pair
 ```
 
 ### Sign Image
